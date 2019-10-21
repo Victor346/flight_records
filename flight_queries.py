@@ -4,9 +4,9 @@ import pprint
 
 client = MongoClient("mongodb+srv://admin:admin@dronecluster-azazs.mongodb.net/test?retryWrites=true&w=majority")
 
-db = client.test
+db = client["test2"]
 
-collection = db["dronDataFlight1"]
+collection = db["flightInfo"]
 
 records = collection.aggregate([
     {
