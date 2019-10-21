@@ -25,7 +25,7 @@ records = collection.aggregate([
             'square_point2_y': {'$max': '$latitude'},
             'square_point3_x': {'$min': '$longitude'},
             'square_point3_y': {'$min': '$latitude'},
-            'square_point4_x': {'$min': '$longitude'},
+            'square_point4_x': {'$max': '$longitude'},
             'square_point4_y': {'$min': '$latitude'}
 
         }
