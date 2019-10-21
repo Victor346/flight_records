@@ -12,17 +12,22 @@ records = collection.aggregate([
     {
         '$group': {
             '_id': "$flightNumber",
-            'record_number': { '$sum': 1},
-            'initial_time': { '$min': '$datetime(utc)'},
-            'final_time': { '$max': '$datetime(utc)'},
+            'record_number': {'$sum': 1},
+            'initial_time': {'$min': '$datetime(utc)'},
+            'final_time': {'$max': '$datetime(utc)'},
             'average_height': {'$avg': '$max_ascent(feet)'},
-            'max_speed_x': { '$max': '$xSpeed(mph)'},
-            'max_speed_y': { '$max': '$ySpeed(mph)'},
-            'max_speed_z': { '$max': '$zSpeed(mph)'},
-            'max_latitude': { '$max': '$latitude'},
-            'min_latitude': { '$min': '$latitude'},
-            'max_longitude': { '$max': '$longitude'},
-            'min_longitude': { '$min': '$longitude'}
+            'max_speed_x': {'$max': '$xSpeed(mph)'},
+            'max_speed_y': {'$max': '$ySpeed(mph)'},
+            'max_speed_z': {'$max': '$zSpeed(mph)'},
+            'square_point1_x': {'$min': '$longitude'},
+            'square_point1_y': {'$max': '$latitude'},
+            'square_point2_x': {'$max': '$longitude'},
+            'square_point2_y': {'$max': '$latitude'},
+            'square_point3_x': {'$min': '$longitude'},
+            'square_point3_y': {'$min': '$latitude'},
+            'square_point4_x': {'$min': '$longitude'},
+            'square_point4_y': {'$min': '$latitude'}
+
         }
     }
 ])
